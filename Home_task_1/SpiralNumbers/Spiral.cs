@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace SpiralNumbers
 {
@@ -29,7 +25,7 @@ namespace SpiralNumbers
             while (i <= _matrix.Length)
             {
                 //Move down
-                for (int j = topOffset; j <= bottomOffset; ++j)
+                for (int j = topOffset; j <= bottomOffset && i <= _matrix.Length; ++j)
                 {
                     _matrix[leftOffset, j] = i++;
                 }
@@ -50,7 +46,7 @@ namespace SpiralNumbers
                 --rightOffset;
 
                 //Move left
-                for (int j = rightOffset; j >= leftOffset; --j)
+                for (int j = rightOffset; j >= leftOffset && i <= _matrix.Length; --j)
                 {
                     _matrix[j, topOffset] = i++;
                 }
@@ -66,7 +62,7 @@ namespace SpiralNumbers
             {
                 for (int j = 0; j < _matrix.GetLength(0); ++j)
                 {
-                    spiralOutput.Append($"{_matrix[j, i],-6}");
+                    spiralOutput.Append($"{_matrix[j, i],-4}");
                 }
                 spiralOutput.AppendLine("\n");
             }
